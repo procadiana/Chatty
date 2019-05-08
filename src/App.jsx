@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./Chatbar.jsx";
 import messages from "../messages.json";
-import generateRandomId from "../utils.js"
+import {generateRandomId} from "../utils.js"
 
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
       messages: messages
     };
 
-    this.onKeyPress = this.onKeyPress.bind(this);
+    this.addNewMessage = this.addNewMessage.bind(this);
   }
 
   componentDidMount() {
@@ -30,20 +30,11 @@ class App extends Component {
   }
 
   addNewMessage (content){
-    const newMessage = {id:generateRandomId,  username: this.state.currentUser, content:content };
+    const newMessage = {id: generateRandomId(), username: this.state.currentUser, content:content };
     const messages = this.state.messages.concat(newMessage)
     this.setState({messages: messages})
   }
 
-
-  onKeyPress=(event => {
-    if (event.key === 'Enter') {
-      this.setState({
-        content: event.target.value
-    });
-      this.addNewMessage( event.target.value);
-    }
-  })
 
 
   render() {
@@ -53,7 +44,7 @@ class App extends Component {
         <a href="/" className="navbar-brand">Chatty</a>
       </nav>
       <MessageList messages={this.state.messages}/>
-      <ChatBar currentUser={this.state.currentUser} onKeyPress={this.onKeyPress} />
+      <ChatBar currentUser={this.state.currentUser} onKeyPress={this.onKeyPress} addNewMessage={this.addNewMessage} />
       </div>
 
     );
