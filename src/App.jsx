@@ -12,7 +12,9 @@ class App extends Component {
     this.state = {
       currentUser: "Anon",
       messages: [],
-      notifications: []
+      notifications: [],
+      clientUpdate: 0,
+
     };
 
     this.addNewMessage = this.addNewMessage.bind(this);
@@ -40,9 +42,15 @@ class App extends Component {
           this.setState({notifications: this.state.notifications.concat(data)});
           break;
 
+        case "usersUpdate":{
+          this.setState({clientUpdate: data.clientUpdate});
+          console.log('dataaaaaa', data.clientUpdate)
+          break;
+        }
+
         default:
           // show an error in the console if the message type is unknown
-          console.log("Error " + data.type);
+          console.log("Error " + data);
 
     };
   }
