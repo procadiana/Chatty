@@ -2,21 +2,35 @@ import React, {Component} from 'react';
 import MessageList from "./MessageList.jsx";
 import ChatBar from "./Chatbar.jsx";
 import messages from "../messages.json";
-import {generateRandomId} from "../utils.js"
+
+
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: "Anonymous",
-      messages: messages
+      currentUser: "",
+      messages: []
     };
 
     this.addNewMessage = this.addNewMessage.bind(this);
+    this.addNewName = this.addNewName.bind(this);
+  }
+
+  addNewName(name){
+    this.setState({currentUser: name});
   }
 
   componentDidMount() {
+    var connection = new WebSocket("ws://localhost:3001");
+    this.setState({connection});
+
+    connection.onmessage = function(event){
+      console.log("message from the server", event.data)
+    };
+
+
     console.log("componentDidMount <App />");
     setTimeout(() => {
       console.log("Simulating incoming message");
@@ -30,9 +44,14 @@ class App extends Component {
   }
 
   addNewMessage (content){
-    const newMessage = {id: generateRandomId(), username: this.state.currentUser, content:content };
+    const newMessage = {username: this.state.currentUser, content:content };
     const messages = this.state.messages.concat(newMessage)
-    this.setState({messages: messages})
+    this.state.connection.send(JSON.stringify(newMessage));
+    this.state.connection.onmessage = event => {
+      console.log(event.data);
+      const data = JSON.parse(event.data);
+      this.setState({messages: this.state.messages.concat(data)});
+    };
   }
 
 
@@ -44,7 +63,7 @@ class App extends Component {
         <a href="/" className="navbar-brand">Chatty</a>
       </nav>
       <MessageList messages={this.state.messages}/>
-      <ChatBar currentUser={this.state.currentUser} onKeyPress={this.onKeyPress} addNewMessage={this.addNewMessage} />
+      <ChatBar currentUser={this.state.currentUser} onKeyPress={this.onKeyPress} addNewMessage={this.addNewMessage} addNewName={this.addNewName}/>
       </div>
 
     );

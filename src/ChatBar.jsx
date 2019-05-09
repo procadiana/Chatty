@@ -8,11 +8,16 @@ function Chatbar(props) {
         props.addNewMessage(event.target.value);
       }
     })
+  const onKeyPressName=(event => {
+      if (event.key === 'Enter') {
+        props.addNewName(event.target.value);
+      }
+    })
 
     return(
       <footer className="chatbar">
-      <input className="chatbar-username" placeholder="Your Name (Optional)" defaultValue={props.currentUser} />
-      <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyPress={onKeyPress } value={props.content }/>
+      <input className="chatbar-username" placeholder="Your Name (Optional)" onKeyPress={onKeyPressName} value={props.username} />
+      <input className="chatbar-message" placeholder="Type a message and hit ENTER" onKeyPress={onKeyPress} value={props.content}/>
       </footer>
     )
 }
