@@ -1,4 +1,4 @@
-:star2: :star2: Chatty App :star2: :star2:
+:star2: :star2: ###Chatty App :star2: :star2:
 
 
 A single page web app that allows users to communicate with each other without having to register accounts.
