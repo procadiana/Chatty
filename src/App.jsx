@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: "Anon",
+      textColor: " ",
       messages: [],
       notifications: [],
       clientUpdate: 0,
@@ -41,7 +42,6 @@ class App extends Component {
 
         case "usersUpdate":{
           this.setState({clientUpdate: data.clientUpdate});
-          console.log('dataaaaaa', data.clientUpdate)
           break;
         }
 
@@ -53,14 +53,17 @@ class App extends Component {
 
   addNewMessage(content){
     console.log(content)
-    const newMessage = {type: "postMessage", username: this.state.currentUser, content:content };
+    const newMessage = {type: "postMessage", username: this.state.currentUser, content:content, color: this.state.textColor };
     this.state.connection.send(JSON.stringify(newMessage));
   }
 
   addNewName(name){
     const newMessage = {type: "postNotification", content: `${this.state.currentUser} has changed their name to ${name}.`};
     this.state.connection.send(JSON.stringify(newMessage));
-    this.setState({currentUser: name});
+
+    var colors = ['#EFF31A', '#F31ADC', '#2EF31A'];
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    this.setState({currentUser: name, textColor: color});
   }
 
   render() {
@@ -70,7 +73,7 @@ class App extends Component {
         <a href="/" className="navbar-brand">Chatty</a>
         <p className="user-couter">There are {this.state.clientUpdate} users online</p>
       </nav>
-      <MessageList messages={this.state.messages} notifications={this.state.notifications} />
+      <MessageList messages={this.state.messages} notifications={this.state.notifications} color={this.state.textColor}/>
       <ChatBar currentUser={this.state.currentUser} onKeyPress={this.onKeyPress} addNewMessage={this.addNewMessage} addNewName={this.addNewName}/>
       </div>
 

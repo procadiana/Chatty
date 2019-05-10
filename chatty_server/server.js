@@ -19,11 +19,13 @@ const wss = new SocketServer({ server });
 
 wss.on('connection', (ws) => {
   console.log("Client connected");
-    wss.clients.forEach(function each(client) {
-      if (client.readyState === ws.OPEN) {
-      client.send(JSON.stringify({type: "usersUpdate", clientUpdate: wss.clients.size}));
-      }
-    })
+
+
+  wss.clients.forEach(function each(client) {
+    if (client.readyState === ws.OPEN) {
+    client.send(JSON.stringify({type: "usersUpdate", clientUpdate: wss.clients.size}));
+    }
+  })
 
 
   ws.on('message',(message) => {
@@ -35,7 +37,7 @@ wss.on('connection', (ws) => {
         case "postMessage":
           wss.clients.forEach(function each(client) {
           if (client.readyState === ws.OPEN) {
-            const messageString = JSON.stringify({type: "incomingMessage", id: uuidv1(), username: messageX.username, content: messageX.content });
+            const messageString = JSON.stringify({type: "incomingMessage", id: uuidv1(), username: messageX.username, content: messageX.content, color: messageX.color });
             console.log('messagestring', messageString);
             client.send(messageString);
           }
