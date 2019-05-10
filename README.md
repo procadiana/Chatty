@@ -1,4 +1,4 @@
-###:star2: :star2: Chatty App :star2: :star2:
+# :star2: :star2: Chatty App :star2: :star2:
 
 
 A single page web app that allows users to communicate with each other without having to register accounts.
@@ -21,7 +21,7 @@ _Here are some examples of different pages/features on Chatty:_
 ![register](https://github.com/procadiana/Chatty/blob/master/img/Write%20message.png)
 
 
-### Dependencies
+## Dependencies
 
 * React
 * Webpack
