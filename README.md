@@ -1,41 +1,29 @@
-React Boilerplate
+Chatty App
 =====================
 
-A minimal and light dev environment for ReactJS.
+A single page web app that allows users to communicate with each other without having to register accounts.
 
-### Usage
+_Here are some examples of different pages/features on Chatty:_
 
-Clone the boilerplate and create your own git repo.
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+# Chatty App Username Change
 
-Install the dependencies and start the server.
+![register](https://github.com/procadiana/TinyApp/blob/master/img/Create%20Account.png)
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
 
-### Static Files
+# Chatty App User Counter
 
-You can store static files like images, fonts, etc in the `build` folder.
+![register](https://github.com/procadiana/TinyApp/blob/master/img/Create%20TinyURL.png)
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
 
-### Linting
+# Chatty App Write Message
 
-This boilerplate project includes React ESLint configuration.
+![register](https://github.com/procadiana/TinyApp/blob/master/img/Short%20URL%20list.png)
 
-```
-npm run lint
-```
+
+
+
+
 
 ### Dependencies
 
@@ -43,3 +31,7 @@ npm run lint
 * Webpack
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+
+## Getting Started
+- Install all dependencies (using the `npm install` command).
+- Run the development web server using `npm start`
