@@ -86,6 +86,7 @@ class App extends Component {
       <div>
       <nav className="navbar">
         <a href="/" className="navbar-brand">Chatty</a>
+        <p className="user-couter">There are {this.state.clientUpdate} users online</p>
       </nav>
       <MessageList messages={this.state.messages} notifications={this.state.notifications} />
       <ChatBar currentUser={this.state.currentUser} onKeyPress={this.onKeyPress} addNewMessage={this.addNewMessage} addNewName={this.addNewName}/>
