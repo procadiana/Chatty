@@ -1,5 +1,5 @@
-Chatty App
-=====================
+:star2: :star2: Chatty App :star2: :star2:
+
 
 A single page web app that allows users to communicate with each other without having to register accounts.
 
@@ -8,21 +8,17 @@ _Here are some examples of different pages/features on Chatty:_
 
 # Chatty App Username Change
 
-![register](https://github.com/procadiana/TinyApp/blob/master/img/Create%20Account.png)
+![register](https://github.com/procadiana/Chatty/blob/master/img/Name_change.png)
 
 
 # Chatty App User Counter
 
-![register](https://github.com/procadiana/TinyApp/blob/master/img/Create%20TinyURL.png)
+![register](https://github.com/procadiana/Chatty/blob/master/img/User%20counter.png)
 
 
 # Chatty App Write Message
 
-![register](https://github.com/procadiana/TinyApp/blob/master/img/Short%20URL%20list.png)
-
-
-
-
+![register](https://github.com/procadiana/Chatty/blob/master/img/Write%20message.png)
 
 
 ### Dependencies
